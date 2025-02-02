@@ -3,7 +3,7 @@
 
  # Introduction 
 
-This GitHub Repo contains the code alongside explanations for this [youtube video](https://youtu.be/ZvJSaioPYyo). The setup work will create a s3 bucket, athena work group, set up the glue data catalog and create the tables. The api gateway and lambda function will be created to allow you to query the data using the bedrock agent. The video will show you how to create the agent and query the data using the aws console. 
+This GitHub Repo contains the code alongside explanations for this [youtube video](https://youtu.be/lkMT8tyZ1-Y). The setup work will create a s3 bucket, athena work group, set up the glue data catalog and create the tables. The api gateway and lambda function will be created to allow you to query the data using the bedrock agent. The video will show you how to create the agent and query the data using the aws console. 
 
 ![diagram](./images/bedrock-agent.png)
 
@@ -91,10 +91,11 @@ linetotal           DOUBLE
 
 1. Run the `create-s3-and-athena-bucket.yaml` located in the `cloudformation` folder to create the s3 bucket for the query results.
 2. Uplaod the conents of the `s3-bucket-upload` folder to the s3 bucket. 
-3. Run the following DDL in Athena to create the tables. Replace the bucket name with the name of the s3 bucket you created. 
+3. Run the following DDL in Athena to create the tables. Replace the bucket name with the name of the s3 bucket you created. These MUST be created in the Default Glue Data Catalog Database. 
 
     Create Customers Table
     ```
+    -- This table must be created in the default Glue Data Catalog Database. 
     CREATE EXTERNAL TABLE customers (
     customerid INT,
     firstname STRING,
@@ -110,6 +111,7 @@ linetotal           DOUBLE
 
     Create Employees Table
     ```
+    -- This table must be created in the default Glue Data Catalog Database. 
     CREATE EXTERNAL TABLE employees (
     employeeid INT,
     managerid INT,
@@ -132,6 +134,7 @@ linetotal           DOUBLE
 
     Create orders table
     ```
+    -- This table must be created in the default Glue Data Catalog Database. 
     CREATE EXTERNAL TABLE orders (
     salesorderid INT,
     salesorderdetailid INT,
@@ -168,7 +171,7 @@ linetotal           DOUBLE
 
 # Useful Links
 
-- [youtube video](https://youtu.be/ZvJSaioPYyo) 
+- [youtube video](https://youtu.be/lkMT8tyZ1-Y) 
 - [website](https://www.johnnychivers.co.uk)
 - [buy me a coffee](https://www.buymeacoffee.com/johnnychivers)
 
